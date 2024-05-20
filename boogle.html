@@ -5,8 +5,9 @@
     <title>Boogle</title>
     <link href="./bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="./bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="./bootstrap/bootswatch.less" rel="stylesheet/less">
+    <link href="./bootstrap/variables.less" rel="stylesheet/less">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.5/css/weather-icons.min.css" rel="stylesheet">
     <style>
 body {
 padding-bottom:40px;
@@ -266,8 +267,8 @@ line-height:1.5
             <div class="nav-collapse collapse">
               <ul class="nav">
                 <li class="active"><a href="#">Home</a></li>
-                <li><a href="aboutboogle.html">About Boogle</a></li>
-                <li><a href="zoogle.html">Go to Zoogle</a></li>
+                <li><a href="https://boogled.netlify.app/boogleminus/angryboogle">Angry Boogle</a></li>
+                <li><a href="https://boogled.netlify.app/boogleminus/booglepop">Boogle Pop</a></li>
               </ul>
             </div><!--/.nav-collapse -->
           </div><!-- /.navbar-inner -->
@@ -288,20 +289,15 @@ line-height:1.5
   
   <div class="container marketing">
     <center>
-      <h1 style="font-size: 85px;"> Welcome to Boogle!!! <br><span style="font-size: 20px;"> "Worlds Best search engine" Rated 10/10</span></h1>
-  <p> You are not actually welcome!</p>
+      <h1 style="font-size: 85px;"> Welcome To Boogle Minus!!1!1 <br><span style="font-size: 20px;"> You Must Pay &#36;0.05 A Month</span></h1>
+  <p>To have access to Boogle's 100 Percent Original, Fun, Adobe Flash Games!</p>
   <br>
   <br>
-  <div class="search-container">
-    <input type="text" id="searchInput" placeholder="What Do You Want?" style="height: 45px; font-size: 20px;">
-    <button class="btn btn-large btn-success" onclick="searchWeb()">Search Now!</button>
-</div>
+  
   <br>
-  <iframe id="innerFrame" name="innerFrame" sandbox="allow-scripts allow-popups allow-forms allow-same-origin allow-popups-to-escape-sandbox allow-downloads allow-storage-access-by-user-activation" frameborder="0" allowfullscreen="" height="600px" width="900px" src="https://advanced-channeler.02.gz-associates.com/?t=tam-madalin-cars-multiplayer" style="overflow: auto;">
-  </iframe> <br>
       <br>
     </center>
-    <div id="dvd"></div>
+  
     <!-- FOOTER -->
     <footer>
       <p class="pull-right"><a href="#">Back to top</a></p>
@@ -311,160 +307,7 @@ line-height:1.5
   </div><!-- /.container -->
   <script src="https://code.jquery.com/jquery.js"></script>
   <script src="./bootstrap/js/bootstrap.min.js"></script>
-  <script>function searchWeb() {
-    var query = document.getElementById("searchInput").value;
-    var googleSearch = "https://www.bing.com/search?q=" + encodeURIComponent(query);
-    window.location.href = googleSearch;
-} </script>
-<script>
-  var box = document.getElementById('dvd'),
-  colors = ['#ff0000', '#ff4000', '#ff8000', '#ffbf00', '#ffff00', '#bfff00', '#80ff00', '#40ff00', '#00ff00', '#00ff40', '#00ff80', '#00ffbf', '#00ffff', '#00bfff', '#0080ff', '#0040ff', '#0000ff', '#4000ff', '#8000ff', '#bf00ff', '#ff00ff', '#ff00bf', '#ff0080', '#ff0040', '#ff0000'],
-  currentColor = Math.floor((Math.random() * 25) + 1),
-  win = window,
-  ww = win.innerWidth,
-  wh = win.innerHeight,
-  translateX = Math.floor((Math.random() * ww) + 1),
-  translateY = Math.floor((Math.random() * wh) + 1),
-  boxWidth = box.offsetWidth,
-  boxHeight = box.offsetHeight,
-  boxTop = box.offsetTop,
-  boxLeft = box.offsetLeft,
-  xMin = -boxLeft,
-  yMin = -boxTop,
-  xMax = win.innerWidth - boxLeft - boxWidth,
-  yMax = win.innerHeight - boxTop - boxHeight,
-  request = null,
-  direction = 'se',
-  speed = 8,
-  timeout = null;
-
-init();
-
-// reset constraints on resize
-window.addEventListener('resize', function(argument) {
-  clearTimeout(timeout);
-  timeout = setTimeout(update, 100);
-}, false);
-
-function init() {
-  request = requestAnimationFrame(init);
-  move();
-  // setInterval(function() {
-  //   move();
-  // }, 16.66);
-}
-
-// reset constraints
-function update() {
-  xMin = -boxLeft;
-  yMin = -boxTop;
-  xMax = win.innerWidth - boxLeft - boxWidth;
-  yMax = win.innerHeight - boxTop - boxHeight;
-}
-
-function move() {
-  setDirection();
-  setStyle(box, {
-    transform: 'translate3d(' + translateX + 'px, ' + translateY + 'px, 0)',
-  });
-}
-
-function setDirection() {
-  switch (direction) {
-    case 'ne':
-      translateX += speed;
-      translateY -= speed;
-      break;
-    case 'nw':
-      translateX -= speed;
-      translateY -= speed;
-      break;
-    case 'se':
-      translateX += speed;
-      translateY += speed;
-      break;
-    case 'sw':
-      translateX -= speed;
-      translateY += speed;
-      break;
-  }
-  setLimits();
-}
-
-function setLimits() {
-  if (translateY <= yMin) {
-    if (direction == 'nw') {
-      direction = 'sw';
-    } else if (direction == 'ne') {
-      direction = 'se';
-    }
-    switchColor();
-  }
-  if (translateY >= yMax) {
-    if (direction == 'se') {
-      direction = 'ne';
-    } else if (direction == 'sw') {
-      direction = 'nw';
-    }
-    switchColor();
-  }
-  if (translateX <= xMin) {
-    if (direction == 'nw') {
-      direction = 'ne';
-    } else if (direction == 'sw') {
-      direction = 'se';
-    }
-    switchColor();
-  }
-  if (translateX >= xMax) {
-    if (direction == 'ne') {
-      direction = 'nw';
-    } else if (direction == 'se') {
-      direction = 'sw';
-    }
-    switchColor();
-  }
-}
-
-function switchColor() {
-  var color = Math.floor((Math.random() * 25) + 1);
-  
-  while( color == currentColor ) {
-    color = Math.floor((Math.random() * 25) + 1)
-  }
-  
-  setStyle(box, {
-    color: colors[color]
-  });
-  
-  currentColor = color;
-}
-
-function getVendor() {
-  var ua = navigator.userAgent.toLowerCase(),
-    match = /opera/.exec(ua) || /msie/.exec(ua) || /firefox/.exec(ua) || /(chrome|safari)/.exec(ua) || /trident/.exec(ua),
-    vendors = {
-      opera: '-o-',
-      chrome: '-webkit-',
-      safari: '-webkit-',
-      firefox: '-moz-',
-      trident: '-ms-',
-      msie: '-ms-',
-    };
-
-  return vendors[match[0]];
-};
-
-function setStyle(element, properties) {
-  var prefix = getVendor(),
-    property, css = '';
-  for (property in properties) {
-    css += property + ': ' + properties[property] + ';';
-    css += prefix + property + ': ' + properties[property] + ';';
-  }
-  element.style.cssText += css;
-}
-</script>
+  <script src="https://cdn.jsdelivr.net/npm/less" ></script>
 <script>
   
 </script>
